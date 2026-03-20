@@ -201,8 +201,8 @@ class TestGoogleMapsTemplate(unittest.TestCase):
                 api_key='test_key'
             )
             
-            # Check values were inserted
-            self.assertIn('40.7580', formatted)
+            # Check values were inserted (note: Python formats 40.7580 as 40.758)
+            self.assertIn('40.758', formatted)  # Trailing zero removed by Python
             self.assertIn('-73.9855', formatted)
             self.assertIn('14', formatted)
             self.assertIn('test_key', formatted)
