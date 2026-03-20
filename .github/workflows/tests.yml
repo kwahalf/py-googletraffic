@@ -42,7 +42,7 @@ jobs:
 
     - name: Run tests with nose2
       run: |
-        nose2 --with-coverage --coverage-report term
+        nose2 --with-coverage --coverage-report term --coverage-report html
 
     - name: Generate coverage report
       run: |
