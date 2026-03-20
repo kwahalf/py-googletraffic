@@ -3,6 +3,7 @@ Core functions for creating georeferenced traffic rasters.
 """
 
 import os
+import io
 import tempfile
 import time
 from typing import Tuple, Optional, Union
