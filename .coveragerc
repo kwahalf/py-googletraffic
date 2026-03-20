@@ -1,0 +1,21 @@
+[run]
+source = googletraffic
+omit = 
+    tests/*
+    setup.py
+    */venv/*
+    */virtualenv/*
+    */__pycache__/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    if TYPE_CHECKING:
+    @abstractmethod
+
+[html]
+directory = htmlcov
