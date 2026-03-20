@@ -76,8 +76,8 @@ jobs:
     - name: Lint with flake8
       run: |
         flake8 googletraffic/ --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 googletraffic/ --count --exit-zero --max-line-length=100 --statistics
+        flake8 googletraffic/ tests/ --count --exit-zero --max-line-length=100 --ignore=E203,W503,E501,F841 --statistics
 
     - name: Check code formatting with black
       run: |
-        black --check googletraffic/ tests/
+        black --check googletraffic/ tests/ --line-length=100

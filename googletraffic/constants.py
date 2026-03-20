@@ -2,8 +2,6 @@
 Constants for traffic color detection and classification.
 """
 
-import numpy as np
-
 # Traffic level definitions (based on Google Maps colors)
 TRAFFIC_LEVELS = {
     1: "No traffic (Green)",
@@ -40,7 +38,7 @@ TRAFFIC_COLORS = {
 # Google Maps zoom levels and approximate meters per pixel
 # Source: https://wiki.openstreetmap.org/wiki/Zoom_levels
 ZOOM_SCALES = {
-    0: 156543.03,   # World
+    0: 156543.03,  # World
     1: 78271.52,
     2: 39135.76,
     3: 19567.88,
@@ -56,11 +54,11 @@ ZOOM_SCALES = {
     13: 19.11,
     14: 9.55,
     15: 4.78,
-    16: 2.39,       # Street level
+    16: 2.39,  # Street level
     17: 1.19,
     18: 0.60,
     19: 0.30,
-    20: 0.15,       # Building level
+    20: 0.15,  # Building level
 }
 
 # Default map tile size in pixels (standard for most mapping APIs)
@@ -110,7 +108,7 @@ GOOGLE_MAPS_HTML_TEMPLATE = """
 
             trafficLayer = new google.maps.TrafficLayer();
             trafficLayer.setMap(map);
-            
+
             // Signal that map is ready
             window.mapReady = true;
         }}
