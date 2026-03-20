@@ -90,7 +90,7 @@ class TestClassifyTrafficArray(unittest.TestCase):
         result = classify_traffic_array(array)
         
         self.assertEqual(result.shape, (3, 3))
-        self.assertTrue(np.all(result == 1))
+        self.assertTrue(bool(np.all(result == 1)))
     
     def test_mixed_colors_array(self):
         """Test array with multiple traffic levels."""
@@ -118,7 +118,8 @@ class TestClassifyTrafficArray(unittest.TestCase):
         array = np.full((2, 2, 3), [0, 0, 255], dtype=np.uint8)
         result = classify_traffic_array(array)
         
-        self.assertTrue(np.all(result == 0))
+        # Use bool() to convert numpy boolean to Python boolean
+        self.assertTrue(bool(np.all(result == 0)))
 
 
 class TestGetMetersPerPixel(unittest.TestCase):
