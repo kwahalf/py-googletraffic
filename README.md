@@ -405,15 +405,93 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 **See [INSTALLATION.md](INSTALLATION.md) for detailed Windows troubleshooting.**
 
+## Testing
+
+py-googletraffic includes a comprehensive test suite using nose2/pytest.
+
+### Running Tests
+
+**Quick start:**
+```bash
+# Install test dependencies
+pip install -e ".[test]"
+
+# Run all tests
+nose2
+
+# Run with coverage
+nose2 --with-coverage
+
+# Or use pytest
+pytest --cov=googletraffic
+```
+
+**Using the test runner:**
+```bash
+# Run with test script
+python run_tests.py --coverage
+
+# Run specific tests
+python run_tests.py --pattern test_utils
+
+# Use different runner
+python run_tests.py --runner pytest
+```
+
+**Using Make:**
+```bash
+# Run tests
+make test
+
+# Run with coverage
+make test-cov
+
+# Run with pytest
+make test-pytest
+```
+
+### Test Structure
+
+- `tests/test_constants.py` - Tests for traffic colors and constants
+- `tests/test_utils.py` - Tests for utility functions and calculations
+- `tests/test_core.py` - Tests for core functions (using mocks)
+
+See [tests/README.md](tests/README.md) for detailed testing documentation.
+
+### Continuous Integration
+
+Tests run automatically on GitHub Actions for every push and pull request. See `.github/workflows/tests.yml` for configuration.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+3. Run tests (`make test` or `nose2`)
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+### Development Setup
+
+```bash
+# Clone your fork
+git clone https://github.com/yourusername/py-googletraffic.git
+cd py-googletraffic
+
+# Install with dev dependencies
+pip install -e ".[dev,test]"
+
+# Run tests
+make test
+
+# Format code
+make format
+
+# Run linter
+make lint
+```
 
 ## License
 

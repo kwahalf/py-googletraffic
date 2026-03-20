@@ -3,43 +3,34 @@ Core functions for creating georeferenced traffic rasters.
 """
 
 import os
+import io
 import tempfile
 import time
 from typing import Tuple, Optional, Union
 import numpy as np
-from pathlib import Path
 
 try:
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
 except ImportError:
-    raise ImportError(
-        "Selenium is required. Install with: pip install selenium"
-    )
+    raise ImportError("Selenium is required. Install with: pip install selenium")
 
 try:
     from PIL import Image
 except ImportError:
-    raise ImportError(
-        "Pillow is required. Install with: pip install Pillow"
-    )
+    raise ImportError("Pillow is required. Install with: pip install Pillow")
 
 try:
     import rasterio
     from rasterio.transform import from_bounds
 except ImportError:
-    raise ImportError(
-        "Rasterio is required. Install with: pip install rasterio"
-    )
+    raise ImportError("Rasterio is required. Install with: pip install rasterio")
 
 from .constants import GOOGLE_MAPS_HTML_TEMPLATE, TILE_SIZE
 from .utils import (
     classify_traffic_array,
     calculate_bounds,
-    create_geotransform,
     split_bounds_into_tiles,
 )
 
@@ -47,12 +38,12 @@ from .utils import (
 def _setup_driver(headless: bool = True) -> webdriver.Chrome:
     """
     Set up Chrome WebDriver for capturing maps.
-    
+
     Parameters
     ----------
     headless : bool
         Whether to run browser in headless mode
-    
+
     Returns
     -------
     webdriver.Chrome
@@ -60,12 +51,12 @@ def _setup_driver(headless: bool = True) -> webdriver.Chrome:
     """
     options = Options()
     if headless:
-        options.add_argument('--headless=new')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.add_argument(f'--window-size={TILE_SIZE},{TILE_SIZE}')
-    
+        options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument(f"--window-size={TILE_SIZE},{TILE_SIZE}")
+
     driver = webdriver.Chrome(options=options)
     return driver
 
@@ -82,7 +73,7 @@ def _capture_traffic_map(
 ) -> np.ndarray:
     """
     Capture a screenshot of Google Maps with traffic layer.
-    
+
     Parameters
     ----------
     latitude : float
@@ -101,7 +92,7 @@ def _capture_traffic_map(
         Time to wait for traffic layer to load (seconds)
     headless : bool
         Whether to run browser in headless mode
-    
+
     Returns
     -------
     np.ndarray
@@ -109,42 +100,39 @@ def _capture_traffic_map(
     """
     driver = None
     temp_file = None
-    
+
     try:
         # Create HTML file
         html_content = GOOGLE_MAPS_HTML_TEMPLATE.format(
-            lat=latitude,
-            lng=longitude,
-            zoom=zoom,
-            api_key=google_key
+            lat=latitude, lng=longitude, zoom=zoom, api_key=google_key
         )
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.html', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".html", delete=False) as f:
             f.write(html_content)
             temp_file = f.name
-        
+
         # Set up driver
         driver = _setup_driver(headless=headless)
         driver.set_window_size(width, height)
-        
+
         # Load page
-        driver.get(f'file://{temp_file}')
-        
+        driver.get(f"file://{temp_file}")
+
         # Wait for map to be ready
         WebDriverWait(driver, 10).until(
-            lambda d: d.execute_script('return window.mapReady === true')
+            lambda d: d.execute_script("return window.mapReady === true")
         )
-        
+
         # Additional wait for traffic layer
         time.sleep(wait_time)
-        
+
         # Take screenshot
         screenshot = driver.get_screenshot_as_png()
         image = Image.open(io.BytesIO(screenshot))
         image_array = np.array(image)
-        
+
         return image_array
-        
+
     finally:
         if driver:
             driver.quit()
@@ -164,10 +152,10 @@ def make_raster(
 ) -> Union[np.ndarray, str]:
     """
     Create a traffic raster centered at a specific location.
-    
+
     This function captures Google Maps traffic data and converts it into
     a georeferenced raster with traffic levels (1-4).
-    
+
     Parameters
     ----------
     location : tuple
@@ -187,13 +175,13 @@ def make_raster(
         Seconds to wait for traffic layer to load (default: 3)
     headless : bool
         Run browser in headless mode (default: True)
-    
+
     Returns
     -------
     np.ndarray or str
         If output_path is None, returns numpy array with traffic levels.
         If output_path is provided, saves GeoTIFF and returns the path.
-    
+
     Examples
     --------
     >>> import googletraffic as gt
@@ -207,10 +195,8 @@ def make_raster(
     ... )
     >>> print(raster.shape)  # (1000, 1000)
     """
-    import io  # Import here to avoid issues
-    
     latitude, longitude = location
-    
+
     # Capture traffic map
     image_array = _capture_traffic_map(
         latitude=latitude,
@@ -222,34 +208,32 @@ def make_raster(
         wait_time=wait_time,
         headless=headless,
     )
-    
+
     # Classify pixels to traffic levels
     traffic_array = classify_traffic_array(image_array)
-    
+
     if output_path is None:
         return traffic_array
-    
+
     # Save as GeoTIFF
     bounds = calculate_bounds(latitude, longitude, width, height, zoom)
     transform = from_bounds(
-        bounds['west'], bounds['south'],
-        bounds['east'], bounds['north'],
-        width, height
+        bounds["west"], bounds["south"], bounds["east"], bounds["north"], width, height
     )
-    
+
     with rasterio.open(
         output_path,
-        'w',
-        driver='GTiff',
+        "w",
+        driver="GTiff",
         height=height,
         width=width,
         count=1,
         dtype=traffic_array.dtype,
-        crs='EPSG:4326',
+        crs="EPSG:4326",
         transform=transform,
     ) as dst:
         dst.write(traffic_array, 1)
-    
+
     return output_path
 
 
@@ -264,10 +248,10 @@ def make_raster_from_bbox(
 ) -> Union[np.ndarray, str]:
     """
     Create a traffic raster from a bounding box.
-    
+
     For large areas, this function automatically splits the region into
     multiple tiles to stay within reasonable pixel dimensions.
-    
+
     Parameters
     ----------
     bbox : tuple
@@ -284,12 +268,12 @@ def make_raster_from_bbox(
         Seconds to wait for traffic layer to load per tile
     headless : bool
         Run browser in headless mode
-    
+
     Returns
     -------
     np.ndarray or str
         Traffic raster or path to saved GeoTIFF
-    
+
     Examples
     --------
     >>> import googletraffic as gt
@@ -304,43 +288,40 @@ def make_raster_from_bbox(
     """
     west, south, east, north = bbox
     bounds = {
-        'west': west,
-        'south': south,
-        'east': east,
-        'north': north,
+        "west": west,
+        "south": south,
+        "east": east,
+        "north": north,
     }
-    
+
     # Split into tiles if necessary
-    center_lat = (north + south) / 2
-    center_lng = (east + west) / 2
-    
     tiles = split_bounds_into_tiles(bounds, zoom, max_pixels)
-    
+
     if len(tiles) == 1:
         # Single tile - use make_raster directly
         tile = tiles[0]
         return make_raster(
-            location=(tile['center_lat'], tile['center_lng']),
-            height=tile['height'],
-            width=tile['width'],
+            location=(tile["center_lat"], tile["center_lng"]),
+            height=tile["height"],
+            width=tile["width"],
             zoom=zoom,
             google_key=google_key,
             output_path=output_path,
             wait_time=wait_time,
             headless=headless,
         )
-    
+
     # Multiple tiles - capture and mosaic
     print(f"Creating {len(tiles)} tiles to cover area...")
-    
+
     # Capture all tiles
     tile_arrays = []
     for idx, tile in enumerate(tiles, 1):
         print(f"  Capturing tile {idx}/{len(tiles)}...")
         tile_array = make_raster(
-            location=(tile['center_lat'], tile['center_lng']),
-            height=tile['height'],
-            width=tile['width'],
+            location=(tile["center_lat"], tile["center_lng"]),
+            height=tile["height"],
+            width=tile["width"],
             zoom=zoom,
             google_key=google_key,
             output_path=None,
@@ -348,48 +329,45 @@ def make_raster_from_bbox(
             headless=headless,
         )
         tile_arrays.append((tile, tile_array))
-    
+
     # Mosaic tiles
-    # Determine grid dimensions
-    max_i = max(t['position'][0] for t, _ in tile_arrays) + 1
-    max_j = max(t['position'][1] for t, _ in tile_arrays) + 1
-    
     # Create empty mosaic
-    total_height = sum(t['height'] for t, _ in tile_arrays if t['position'][1] == 0)
-    total_width = sum(t['width'] for t, _ in tile_arrays if t['position'][0] == 0)
+    total_height = sum(t["height"] for t, _ in tile_arrays if t["position"][1] == 0)
+    total_width = sum(t["width"] for t, _ in tile_arrays if t["position"][0] == 0)
     mosaic = np.zeros((total_height, total_width), dtype=np.uint8)
-    
+
     # Fill mosaic
     for tile, tile_array in tile_arrays:
-        i, j = tile['position']
+        i, j = tile["position"]
         # Calculate position in mosaic
-        start_i = sum(t['height'] for t, _ in tile_arrays 
-                     if t['position'][0] < i and t['position'][1] == 0)
-        start_j = sum(t['width'] for t, _ in tile_arrays 
-                     if t['position'][1] < j and t['position'][0] == 0)
-        
-        mosaic[start_i:start_i+tile['height'], 
-               start_j:start_j+tile['width']] = tile_array
-    
+        start_i = sum(
+            t["height"] for t, _ in tile_arrays if t["position"][0] < i and t["position"][1] == 0
+        )
+        start_j = sum(
+            t["width"] for t, _ in tile_arrays if t["position"][1] < j and t["position"][0] == 0
+        )
+
+        mosaic[start_i : start_i + tile["height"], start_j : start_j + tile["width"]] = tile_array
+
     if output_path is None:
         return mosaic
-    
+
     # Save as GeoTIFF
     transform = from_bounds(west, south, east, north, total_width, total_height)
-    
+
     with rasterio.open(
         output_path,
-        'w',
-        driver='GTiff',
+        "w",
+        driver="GTiff",
         height=total_height,
         width=total_width,
         count=1,
         dtype=mosaic.dtype,
-        crs='EPSG:4326',
+        crs="EPSG:4326",
         transform=transform,
     ) as dst:
         dst.write(mosaic, 1)
-    
+
     return output_path
 
 
@@ -404,7 +382,7 @@ def make_raster_from_polygon(
 ) -> Union[np.ndarray, str]:
     """
     Create a traffic raster covering a polygon area.
-    
+
     Parameters
     ----------
     polygon : shapely.geometry.Polygon or geopandas.GeoDataFrame
@@ -421,12 +399,12 @@ def make_raster_from_polygon(
         Seconds to wait for traffic layer to load per tile
     headless : bool
         Run browser in headless mode
-    
+
     Returns
     -------
     np.ndarray or str
         Traffic raster or path to saved GeoTIFF
-    
+
     Examples
     --------
     >>> import googletraffic as gt
@@ -442,21 +420,19 @@ def make_raster_from_polygon(
     """
     try:
         import geopandas as gpd
-        from shapely.geometry import Polygon
     except ImportError:
         raise ImportError(
-            "GeoPandas and Shapely are required. Install with: "
-            "pip install geopandas shapely"
+            "GeoPandas and Shapely are required. Install with: " "pip install geopandas shapely"
         )
-    
+
     # Handle GeoDataFrame
     if isinstance(polygon, gpd.GeoDataFrame):
         polygon = polygon.geometry.unary_union
-    
+
     # Get bounding box
     bounds = polygon.bounds  # (minx, miny, maxx, maxy)
     bbox = (bounds[0], bounds[1], bounds[2], bounds[3])  # (west, south, east, north)
-    
+
     return make_raster_from_bbox(
         bbox=bbox,
         zoom=zoom,

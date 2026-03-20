@@ -3,7 +3,7 @@ from pathlib import Path
 
 # Read the README file
 this_directory = Path(__file__).parent
-long_description = (this_directory / "README.md").read_text()
+long_description = (this_directory / "README.md").read_text(encoding='utf-8')
 
 setup(
     name="py-googletraffic",
@@ -39,6 +39,14 @@ setup(
             "pytest>=7.0.0",
             "black>=22.0.0",
             "flake8>=4.0.0",
+        ],
+        "test": [
+            "nose2>=0.12.0",
+            "coverage>=6.0.0",
+            "pytest>=7.0.0",
+            "pytest-cov>=3.0.0",
+            "pytest-mock>=3.6.0",
+            "mock>=4.0.3",
         ],
         "jupyter": [
             "jupyter>=1.0.0",
