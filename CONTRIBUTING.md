@@ -358,10 +358,19 @@ All contributors are automatically recognized! Your contributions will appear in
 Every time code is merged into the main branch:
 1. A GitHub Action automatically runs
 2. It analyzes git commit history
-3. Updates CONTRIBUTORS.md with current statistics
-4. All commit authors are credited
+3. Creates a Pull Request with updated CONTRIBUTORS.md
+4. A maintainer reviews and merges the PR
+5. All commit authors are credited
 
 **Note:** Make sure your git email matches your GitHub email to be properly credited with your GitHub profile.
+
+### Automated PRs
+
+The contributor update workflow creates automated PRs titled **"chore: Update CONTRIBUTORS.md"**. These PRs:
+- Are labeled with `documentation` and `automated`
+- Include a summary of changes
+- Need manual review and approval (due to branch protection)
+- Should be merged when the updates look correct
 
 ### Update Contributors Manually
 
