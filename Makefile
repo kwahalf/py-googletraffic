@@ -1,6 +1,6 @@
 # Makefile for py-googletraffic
 
-.PHONY: help install install-dev install-test test test-v test-cov clean lint format
+.PHONY: help install install-dev install-test test test-v test-cov clean lint format contributors build check-release
 
 help:
 	@echo "py-googletraffic Makefile"
@@ -16,6 +16,9 @@ help:
 	@echo "  clean         - Remove build artifacts and cache files"
 	@echo "  lint          - Run code linting"
 	@echo "  format        - Format code with black"
+	@echo "  contributors  - Update CONTRIBUTORS.md from git history"
+	@echo "  build         - Build package for distribution"
+	@echo "  check-release - Check if package is ready for release"
 	@echo "  docs          - Generate documentation"
 
 install:
@@ -74,4 +77,26 @@ docs:
 	@echo "  - INSTALLATION.md"
 	@echo "  - QUICKSTART.md"
 	@echo "  - WINDOWS.md"
+	@echo "  - COLAB.md"
+	@echo "  - CONTRIBUTING.md"
+	@echo "  - CONTRIBUTORS.md"
 	@echo "  - tests/README.md"
+
+contributors:
+	python3 scripts/generate_contributors.py
+	@echo ""
+	@echo "✅ CONTRIBUTORS.md updated!"
+	@echo "📝 Remember to commit the changes."
+
+build:
+	@echo "🔨 Building package..."
+	rm -rf build/ dist/ *.egg-info
+	python3 -m build
+	@echo ""
+	@echo "✅ Package built successfully!"
+	@echo "📦 Distribution files in dist/"
+	@ls -lh dist/
+
+check-release:
+	@echo "🔍 Checking if package is ready for release..."
+	@python3 scripts/check_release_ready.py

@@ -129,6 +129,13 @@ def _capture_traffic_map(
         # Take screenshot
         screenshot = driver.get_screenshot_as_png()
         image = Image.open(io.BytesIO(screenshot))
+
+        # Resize to exact dimensions if needed
+        if image.size != (width, height):
+            # Use LANCZOS resampling (compatibility with Pillow 9.x and 10.x)
+            resample = getattr(Image, "Resampling", Image).LANCZOS
+            image = image.resize((width, height), resample)
+
         image_array = np.array(image)
 
         return image_array

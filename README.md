@@ -4,6 +4,8 @@ Python package for creating georeferenced traffic rasters from Google Maps traff
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Google Colab](https://img.shields.io/badge/Google%20Colab-Supported-orange.svg)](COLAB.md)
+[![Contributors](https://img.shields.io/github/contributors/kwahalf/py-googletraffic.svg)](CONTRIBUTORS.md)
 
 ## Overview
 
@@ -28,11 +30,27 @@ Traffic is classified into 4 levels based on Google Maps colors:
 | 3 | 🔴 Red | High traffic |
 | 4 | 🔴 Dark Red | Heavy traffic |
 
+## Platform Support
+
+**py-googletraffic** works on multiple platforms:
+
+- 💻 **Local Development:** Windows, macOS, Linux
+- 📓 **Jupyter Notebooks:** Local or JupyterHub environments  
+- ☁️ **Google Colab:** Full cloud-based support ([Setup Guide](COLAB.md))
+- 🐳 **Docker:** Can be containerized for deployment
+
+> **📓 Google Colab Users:** See the complete [Google Colab Setup Guide](COLAB.md) for cloud-based installation and usage examples.
+
 ## Installation
 
-> **📌 Windows Users:** See the complete [Windows Setup Guide](WINDOWS.md) for detailed installation instructions, troubleshooting, and best practices.
+> **📌 Platform-Specific Guides:**
+> - **Windows:** [Windows Setup Guide](WINDOWS.md)
+> - **Google Colab:** [Colab Setup Guide](COLAB.md)  
+> - **General:** [Complete Installation Guide](INSTALLATION.md)
 
 ### Prerequisites
+
+> **Note:** Google Colab users can skip this section and follow the [Colab Setup Guide](COLAB.md) instead.
 
 1. **Python 3.8+**
 2. **ChromeDriver** (for Selenium browser automation):
@@ -56,7 +74,7 @@ Traffic is classified into 4 levels based on Google Maps colors:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/py-googletraffic.git
+git clone https://github.com/kwahalf/py-googletraffic.git
 cd py-googletraffic
 
 # Create virtual environment (recommended)
@@ -76,6 +94,20 @@ pip install -e .
 # Or install dependencies directly
 pip install -r requirements.txt
 ```
+
+## Try It Now! 🚀
+
+**Want to try without installing anything?** Open our interactive Google Colab notebook:
+
+👉 **[Open in Google Colab](examples/google_colab_example.ipynb)** 👈
+
+The Colab notebook includes:
+- ✅ Complete setup instructions (no local installation needed)
+- ✅ Interactive examples with visualizations
+- ✅ Multi-location traffic comparison
+- ✅ Save results to Google Drive
+
+See the [Google Colab Setup Guide](COLAB.md) for more details.
 
 ## Quick Start
 
@@ -477,7 +509,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/py-googletraffic.git
+git clone https://github.com/kwahalf/py-googletraffic.git
 cd py-googletraffic
 
 # Install with dev dependencies
@@ -493,6 +525,16 @@ make format
 make lint
 ```
 
+## Contributors 🙏
+
+We appreciate all contributions to **py-googletraffic**!
+
+[![Contributors](https://contrib.rocks/image?repo=kwahalf/py-googletraffic)](https://github.com/kwahalf/py-googletraffic/graphs/contributors)
+
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for a complete list of contributors and their contributions.
+
+**Want to contribute?** Check out our [Contributing Guide](CONTRIBUTING.md) to get started!
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -506,7 +548,7 @@ If you use this package in your research, please cite:
   title = {py-googletraffic: Python Package for Google Maps Traffic Data},
   author = {{py-googletraffic Contributors}},
   year = {2026},
-  url = {https://github.com/yourusername/py-googletraffic}
+  url = {https://github.com/kwahalf/py-googletraffic}
 }
 ```
 
@@ -524,5 +566,5 @@ If you use this package in your research, please cite:
 
 ## Contact
 
-For questions, issues, or suggestions, please [open an issue](https://github.com/yourusername/py-googletraffic/issues) on GitHub.
+For questions, issues, or suggestions, please [open an issue](https://github.com/kwahalf/py-googletraffic/issues) on GitHub.
 Create Georeferenced Traffic Data from the Google Maps  API
