@@ -10,6 +10,9 @@ on:
       - 'pyproject.toml'
   workflow_dispatch:  # Allow manual trigger
 
+permissions:
+  contents: write  # Allow creating tags and releases
+
 jobs:
   check-version:
     name: Check if version changed
