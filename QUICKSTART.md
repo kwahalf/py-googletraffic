@@ -2,7 +2,8 @@
 
 Get up and running with py-googletraffic in 5 minutes!
 
-> **💻 Windows Users:** For a complete Windows-specific guide with screenshots and detailed troubleshooting, see [WINDOWS.md](WINDOWS.md)
+> **� Google Colab Users:** Use the [Google Colab Setup Guide](COLAB.md) and skip Steps 1-2  
+> **💻 Windows Users:** For a complete Windows-specific guide, see [WINDOWS.md](WINDOWS.md)
 
 ## Step 1: Install Dependencies (2 minutes)
 

@@ -2,6 +2,14 @@
 
 Complete guide to installing and setting up py-googletraffic.
 
+## Quick Links
+
+- 📓 **Google Colab Users:** Skip this guide and use the [Google Colab Setup Guide](COLAB.md) instead
+- 💻 **Windows Users:** See platform-specific notes in the [Windows Setup Guide](WINDOWS.md)
+- 🚀 **After installation:** Jump to the [Quick Start Guide](QUICKSTART.md)
+
+---
+
 ## Prerequisites
 
 ### 1. Python Environment

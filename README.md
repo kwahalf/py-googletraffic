@@ -4,6 +4,7 @@ Python package for creating georeferenced traffic rasters from Google Maps traff
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Google Colab](https://img.shields.io/badge/Google%20Colab-Supported-orange.svg)](COLAB.md)
 
 ## Overview
 
@@ -28,11 +29,27 @@ Traffic is classified into 4 levels based on Google Maps colors:
 | 3 | 🔴 Red | High traffic |
 | 4 | 🔴 Dark Red | Heavy traffic |
 
+## Platform Support
+
+**py-googletraffic** works on multiple platforms:
+
+- 💻 **Local Development:** Windows, macOS, Linux
+- 📓 **Jupyter Notebooks:** Local or JupyterHub environments  
+- ☁️ **Google Colab:** Full cloud-based support ([Setup Guide](COLAB.md))
+- 🐳 **Docker:** Can be containerized for deployment
+
+> **📓 Google Colab Users:** See the complete [Google Colab Setup Guide](COLAB.md) for cloud-based installation and usage examples.
+
 ## Installation
 
-> **📌 Windows Users:** See the complete [Windows Setup Guide](WINDOWS.md) for detailed installation instructions, troubleshooting, and best practices.
+> **📌 Platform-Specific Guides:**
+> - **Windows:** [Windows Setup Guide](WINDOWS.md)
+> - **Google Colab:** [Colab Setup Guide](COLAB.md)  
+> - **General:** [Complete Installation Guide](INSTALLATION.md)
 
 ### Prerequisites
+
+> **Note:** Google Colab users can skip this section and follow the [Colab Setup Guide](COLAB.md) instead.
 
 1. **Python 3.8+**
 2. **ChromeDriver** (for Selenium browser automation):
@@ -76,6 +93,20 @@ pip install -e .
 # Or install dependencies directly
 pip install -r requirements.txt
 ```
+
+## Try It Now! 🚀
+
+**Want to try without installing anything?** Open our interactive Google Colab notebook:
+
+👉 **[Open in Google Colab](examples/google_colab_example.ipynb)** 👈
+
+The Colab notebook includes:
+- ✅ Complete setup instructions (no local installation needed)
+- ✅ Interactive examples with visualizations
+- ✅ Multi-location traffic comparison
+- ✅ Save results to Google Drive
+
+See the [Google Colab Setup Guide](COLAB.md) for more details.
 
 ## Quick Start
 
