@@ -157,7 +157,7 @@ echo "GOOGLE_MAPS_API_KEY=your_api_key_here" > .env
 #### macOS/Linux:
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/py-googletraffic.git
+git clone https://github.com/kwahalf/py-googletraffic.git
 cd py-googletraffic
 
 # Create virtual environment (recommended)
@@ -173,7 +173,7 @@ pip install -e .
 #### Windows (Command Prompt):
 ```cmd
 :: Clone the repository
-git clone https://github.com/yourusername/py-googletraffic.git
+git clone https://github.com/kwahalf/py-googletraffic.git
 cd py-googletraffic
 
 :: Create virtual environment (recommended)
@@ -189,7 +189,7 @@ pip install -e .
 #### Windows (PowerShell):
 ```powershell
 # Clone the repository
-git clone https://github.com/yourusername/py-googletraffic.git
+git clone https://github.com/kwahalf/py-googletraffic.git
 cd py-googletraffic
 
 # Create virtual environment (recommended)
@@ -520,6 +520,6 @@ docker run -it -e GOOGLE_MAPS_API_KEY=your_key py-googletraffic
 
 ## Getting Help
 
-- 📝 [GitHub Issues](https://github.com/yourusername/py-googletraffic/issues)
-- 📖 [Documentation](https://github.com/yourusername/py-googletraffic)
-- 💬 [Discussions](https://github.com/yourusername/py-googletraffic/discussions)
+- 📝 [GitHub Issues](https://github.com/kwahalf/py-googletraffic/issues)
+- 📖 [Documentation](https://github.com/kwahalf/py-googletraffic)
+- 💬 [Discussions](https://github.com/kwahalf/py-googletraffic/discussions)

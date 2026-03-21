@@ -94,7 +94,7 @@ cd C:\dev
 
 If you have Git:
 ```cmd
-git clone https://github.com/yourusername/py-googletraffic.git
+git clone https://github.com/kwahalf/py-googletraffic.git
 cd py-googletraffic
 ```
 
@@ -141,7 +141,7 @@ cd C:\dev
 
 4. **Clone or download repository**
 ```powershell
-git clone https://github.com/yourusername/py-googletraffic.git
+git clone https://github.com/kwahalf/py-googletraffic.git
 cd py-googletraffic
 ```
 
@@ -467,7 +467,7 @@ logging.basicConfig(level=logging.DEBUG)
 - 📖 [Full Documentation](README.md)
 - 🔧 [Installation Guide](INSTALLATION.md)
 - 🚀 [Quick Start](QUICKSTART.md)
-- 🐛 [GitHub Issues](https://github.com/yourusername/py-googletraffic/issues)
+- 🐛 [GitHub Issues](https://github.com/kwahalf/py-googletraffic/issues)
 
 ## Next Steps
 

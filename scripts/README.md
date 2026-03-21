@@ -102,4 +102,4 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-For questions about these scripts, [open an issue](https://github.com/yourusername/py-googletraffic/issues).
+For questions about these scripts, [open an issue](https://github.com/kwahalf/py-googletraffic/issues).

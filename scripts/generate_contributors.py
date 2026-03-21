@@ -125,7 +125,7 @@ def generate_contributors_md(contributors):
             "- Listed on this page",
             (
                 "- Shown on the [GitHub repository contributors page]"
-                "(https://github.com/yourusername/py-googletraffic/graphs/contributors)"
+                "(https://github.com/kwahalf/py-googletraffic/graphs/contributors)"
             ),
             "- Credited in release notes for their contributions",
             "",

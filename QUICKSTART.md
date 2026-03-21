@@ -211,7 +211,7 @@ for level in range(1, 5):
 ## Need Help?
 
 - 📖 Full docs: [README.md](README.md)
-- 🐛 Issues: https://github.com/yourusername/py-googletraffic/issues
+- 🐛 Issues: https://github.com/kwahalf/py-googletraffic/issues
 - 💬 Questions: Open a discussion on GitHub
 
 Happy mapping! 🗺️🚦

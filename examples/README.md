@@ -52,7 +52,7 @@ Cloud-ready notebook specifically designed for Google Colab:
    
 2. **Option B:** Direct link (if you've published the notebook):
    ```
-   https://colab.research.google.com/github/yourusername/py-googletraffic/blob/main/examples/google_colab_example.ipynb
+   https://colab.research.google.com/github/kwahalf/py-googletraffic/blob/main/examples/google_colab_example.ipynb
    ```
 
 3. Run all cells in order
@@ -210,8 +210,8 @@ Have a cool example? We'd love to include it!
 ## Support
 
 - 📖 [Documentation](../README.md)
-- 🐛 [Report Issues](https://github.com/yourusername/py-googletraffic/issues)
-- 💬 [Discussions](https://github.com/yourusername/py-googletraffic/discussions)
+- 🐛 [Report Issues](https://github.com/kwahalf/py-googletraffic/issues)
+- 💬 [Discussions](https://github.com/kwahalf/py-googletraffic/discussions)
 
 ---
 

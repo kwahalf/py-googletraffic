@@ -8,15 +8,17 @@ long_description = (this_directory / "README.md").read_text(encoding='utf-8')
 setup(
     name="py-googletraffic",
     version="0.1.0",
-    author="py-googletraffic Contributors",
+    author="Denis Juma",
+    author_email="kwanusud@gmail.com",
     description="Create georeferenced traffic rasters from Google Maps",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/py-googletraffic",
+    url="https://github.com/kwahalf/py-googletraffic",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Science/Research",
+        "Intended Audience :: Developers",
         "Topic :: Scientific/Engineering :: GIS",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
@@ -24,6 +26,7 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Operating System :: OS Independent",
     ],
     python_requires=">=3.8",
     install_requires=[
@@ -55,9 +58,12 @@ setup(
             "folium>=0.12.0",
         ],
     },
-    keywords="google-maps traffic gis raster geospatial",
+    keywords="google-maps traffic gis raster geospatial selenium",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/py-googletraffic/issues",
-        "Source": "https://github.com/yourusername/py-googletraffic",
+        "Homepage": "https://github.com/kwahalf/py-googletraffic",
+        "Bug Reports": "https://github.com/kwahalf/py-googletraffic/issues",
+        "Source": "https://github.com/kwahalf/py-googletraffic",
+        "Documentation": "https://github.com/kwahalf/py-googletraffic#readme",
+        "Changelog": "https://github.com/kwahalf/py-googletraffic/blob/main/CHANGELOG.md",
     },
 )

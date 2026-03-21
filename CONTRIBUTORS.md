@@ -27,7 +27,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
 
 All contributors are:
 - Listed on this page
-- Shown on the [GitHub repository contributors page](https://github.com/yourusername/py-googletraffic/graphs/contributors)
+- Shown on the [GitHub repository contributors page](https://github.com/kwahalf/py-googletraffic/graphs/contributors)
 - Credited in release notes for their contributions
 
 ## Updating This File

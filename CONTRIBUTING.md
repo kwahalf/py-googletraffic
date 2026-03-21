@@ -350,7 +350,7 @@ All contributors are automatically recognized! Your contributions will appear in
 
 - **[CONTRIBUTORS.md](CONTRIBUTORS.md)** - Auto-generated from git commits
 - **[README.md](README.md)** - Contributors section with avatars
-- **[GitHub Contributors Page](https://github.com/yourusername/py-googletraffic/graphs/contributors)** - Visual contribution graph
+- **[GitHub Contributors Page](https://github.com/kwahalf/py-googletraffic/graphs/contributors)** - Visual contribution graph
 - **Release notes** - Mentioned for significant contributions
 
 ### How It Works

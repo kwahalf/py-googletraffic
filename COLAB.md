@@ -48,10 +48,10 @@ import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
 # Install py-googletraffic from GitHub
-!pip install git+https://github.com/yourusername/py-googletraffic.git
+!pip install git+https://github.com/kwahalf/py-googletraffic.git
 
 # Alternative: Install from local clone
-# !git clone https://github.com/yourusername/py-googletraffic.git
+# !git clone https://github.com/kwahalf/py-googletraffic.git
 # %cd py-googletraffic
 # !pip install -e .
 # %cd ..
@@ -92,7 +92,7 @@ os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
 # 4. Install py-googletraffic
 print("📦 Installing py-googletraffic...")
-!pip install -q git+https://github.com/yourusername/py-googletraffic.git
+!pip install -q git+https://github.com/kwahalf/py-googletraffic.git
 
 # 5. Verify installation
 print("✅ Setup complete! Verifying installation...")
@@ -454,7 +454,7 @@ print("📦 Installing dependencies...")
 import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
-!pip install -q git+https://github.com/yourusername/py-googletraffic.git
+!pip install -q git+https://github.com/kwahalf/py-googletraffic.git
 
 # 2. IMPORTS
 import googletraffic as gt
