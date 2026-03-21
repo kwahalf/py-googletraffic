@@ -320,9 +320,9 @@ Other approaches considered
 ## Getting Help
 
 - 📖 Read the [documentation](README.md)
-- 💬 Ask questions in [GitHub Discussions](https://github.com/yourusername/py-googletraffic/discussions)
-- 🐛 Report bugs in [GitHub Issues](https://github.com/yourusername/py-googletraffic/issues)
-- 💡 Suggest features in [GitHub Issues](https://github.com/yourusername/py-googletraffic/issues)
+- 💬 Ask questions in [GitHub Discussions](https://github.com/kwahalf/py-googletraffic/discussions)
+- 🐛 Report bugs in [GitHub Issues](https://github.com/kwahalf/py-googletraffic/issues)
+- 💡 Suggest features in [GitHub Issues](https://github.com/kwahalf/py-googletraffic/issues)
 
 ## Code of Conduct
 
@@ -343,9 +343,6 @@ We pledge to make participation in our project a harassment-free experience for 
 - Publishing others' private information
 - Other conduct inappropriate in a professional setting
 
-### Enforcement
-
-Report violations to [maintainer email]. All complaints will be reviewed and investigated.
 
 ## Recognition
 
