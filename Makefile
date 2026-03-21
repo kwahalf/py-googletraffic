@@ -1,6 +1,6 @@
 # Makefile for py-googletraffic
 
-.PHONY: help install install-dev install-test test test-v test-cov clean lint format
+.PHONY: help install install-dev install-test test test-v test-cov clean lint format contributors
 
 help:
 	@echo "py-googletraffic Makefile"
@@ -16,6 +16,7 @@ help:
 	@echo "  clean         - Remove build artifacts and cache files"
 	@echo "  lint          - Run code linting"
 	@echo "  format        - Format code with black"
+	@echo "  contributors  - Update CONTRIBUTORS.md from git history"
 	@echo "  docs          - Generate documentation"
 
 install:
@@ -74,4 +75,13 @@ docs:
 	@echo "  - INSTALLATION.md"
 	@echo "  - QUICKSTART.md"
 	@echo "  - WINDOWS.md"
+	@echo "  - COLAB.md"
+	@echo "  - CONTRIBUTING.md"
+	@echo "  - CONTRIBUTORS.md"
 	@echo "  - tests/README.md"
+
+contributors:
+	python3 scripts/generate_contributors.py
+	@echo ""
+	@echo "✅ CONTRIBUTORS.md updated!"
+	@echo "📝 Remember to commit the changes."

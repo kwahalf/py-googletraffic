@@ -5,6 +5,7 @@ Python package for creating georeferenced traffic rasters from Google Maps traff
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Google Colab](https://img.shields.io/badge/Google%20Colab-Supported-orange.svg)](COLAB.md)
+[![Contributors](https://img.shields.io/github/contributors/yourusername/py-googletraffic.svg)](CONTRIBUTORS.md)
 
 ## Overview
 
@@ -523,6 +524,16 @@ make format
 # Run linter
 make lint
 ```
+
+## Contributors 🙏
+
+We appreciate all contributions to **py-googletraffic**!
+
+[![Contributors](https://contrib.rocks/image?repo=yourusername/py-googletraffic)](https://github.com/yourusername/py-googletraffic/graphs/contributors)
+
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for a complete list of contributors and their contributions.
+
+**Want to contribute?** Check out our [Contributing Guide](CONTRIBUTING.md) to get started!
 
 ## License
 

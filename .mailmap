@@ -1,0 +1,10 @@
+# Git Mailmap - Normalize contributor names and emails
+# Format: Preferred Name <preferred@email> Commit Name <commit@email>
+# See: https://git-scm.com/docs/gitmailmap
+
+# Main contributors
+Denis Juma <kwanusud@gmail.com> kwahalf <kwanusud@gmail.com>
+
+# Add more mappings as needed:
+# John Doe <john@example.com> johndoe <john@other.com>
+# Jane Smith <jane@example.com> Jane <jane@other.com>

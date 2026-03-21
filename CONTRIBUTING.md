@@ -346,9 +346,33 @@ We pledge to make participation in our project a harassment-free experience for 
 
 ## Recognition
 
-Contributors will be recognized in:
-- README.md contributors section
-- Release notes
-- GitHub contributors page
+All contributors are automatically recognized! Your contributions will appear in:
+
+- **[CONTRIBUTORS.md](CONTRIBUTORS.md)** - Auto-generated from git commits
+- **[README.md](README.md)** - Contributors section with avatars
+- **[GitHub Contributors Page](https://github.com/yourusername/py-googletraffic/graphs/contributors)** - Visual contribution graph
+- **Release notes** - Mentioned for significant contributions
+
+### How It Works
+
+Every time code is merged into the main branch:
+1. A GitHub Action automatically runs
+2. It analyzes git commit history
+3. Updates CONTRIBUTORS.md with current statistics
+4. All commit authors are credited
+
+**Note:** Make sure your git email matches your GitHub email to be properly credited with your GitHub profile.
+
+### Update Contributors Manually
+
+You can also generate the contributors list locally:
+
+```bash
+# Generate/update CONTRIBUTORS.md
+python scripts/generate_contributors.py
+
+# Or use the Makefile target
+make contributors
+```
 
 Thank you for contributing to py-googletraffic! 🎉
