@@ -72,6 +72,15 @@ Traffic is classified into 4 levels based on Google Maps colors:
 
 ### Install Package
 
+**Option 1: Install from PyPI (Recommended)**
+
+```bash
+# Install the latest stable version
+pip install py-googletraffic
+```
+
+**Option 2: Install from Source (For Development)**
+
 ```bash
 # Clone the repository
 git clone https://github.com/kwahalf/py-googletraffic.git
@@ -90,9 +99,6 @@ source venv/bin/activate
 
 # Install in development mode
 pip install -e .
-
-# Or install dependencies directly
-pip install -r requirements.txt
 ```
 
 ## Try It Now! 🚀

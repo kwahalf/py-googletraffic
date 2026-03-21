@@ -90,7 +90,15 @@ mkdir C:\dev
 cd C:\dev
 ```
 
-3. **Clone the repository**
+3. **Install py-googletraffic**
+
+**Option A: Install from PyPI (Recommended):**
+```cmd
+:: Simple one-line installation
+pip install py-googletraffic
+```
+
+**Option B: Install from Source (For Development):**
 
 If you have Git:
 ```cmd
@@ -100,19 +108,19 @@ cd py-googletraffic
 
 Or download ZIP from GitHub and extract to `C:\dev\py-googletraffic`
 
-4. **Create virtual environment**
+4. **Create virtual environment (for Option B only)**
 ```cmd
 python -m venv venv
 ```
 
-5. **Activate virtual environment**
+5. **Activate virtual environment (for Option B only)**
 ```cmd
 venv\Scripts\activate.bat
 ```
 
 You should see `(venv)` at the start of your command prompt.
 
-6. **Install package**
+6. **Install package in development mode (for Option B only)**
 ```cmd
 pip install -e .
 ```
@@ -139,19 +147,29 @@ mkdir C:\dev
 cd C:\dev
 ```
 
-4. **Clone or download repository**
+4. **Install py-googletraffic**
+
+**Option A: Install from PyPI (Recommended):**
+```powershell
+# Simple one-line installation
+pip install py-googletraffic
+```
+
+**Option B: Install from Source (For Development):**
+
+Clone or download repository:
 ```powershell
 git clone https://github.com/kwahalf/py-googletraffic.git
 cd py-googletraffic
 ```
 
-5. **Create and activate virtual environment**
+5. **Create and activate virtual environment (for Option B)**
 ```powershell
 python -m venv venv
 venv\Scripts\Activate.ps1
 ```
 
-6. **Install package**
+6. **Install package in development mode (for Option B)**
 ```powershell
 pip install -e .
 ```

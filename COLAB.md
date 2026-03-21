@@ -47,14 +47,11 @@ Run this setup code **once** at the beginning of your Colab notebook:
 import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
-# Install py-googletraffic from GitHub
-!pip install git+https://github.com/kwahalf/py-googletraffic.git
+# Install py-googletraffic from PyPI
+!pip install py-googletraffic
 
-# Alternative: Install from local clone
-# !git clone https://github.com/kwahalf/py-googletraffic.git
-# %cd py-googletraffic
-# !pip install -e .
-# %cd ..
+# Alternative: Install from GitHub (for latest development version)
+# !pip install git+https://github.com/kwahalf/py-googletraffic.git
 ```
 
 ### Step 3: Configure ChromeDriver Path
@@ -92,7 +89,7 @@ os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
 # 4. Install py-googletraffic
 print("📦 Installing py-googletraffic...")
-!pip install -q git+https://github.com/kwahalf/py-googletraffic.git
+!pip install -q py-googletraffic
 
 # 5. Verify installation
 print("✅ Setup complete! Verifying installation...")
@@ -483,7 +480,7 @@ print("📦 Installing dependencies...")
 import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
-!pip install -q git+https://github.com/kwahalf/py-googletraffic.git
+!pip install -q py-googletraffic
 
 # 2. IMPORTS
 import googletraffic as gt
