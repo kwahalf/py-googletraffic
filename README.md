@@ -4,8 +4,8 @@ Python package for creating georeferenced traffic rasters from Google Maps traff
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Google Colab](https://img.shields.io/badge/Google%20Colab-Supported-orange.svg)](COLAB.md)
-[![Contributors](https://img.shields.io/github/contributors/kwahalf/py-googletraffic.svg)](CONTRIBUTORS.md)
+[![Google Colab](https://img.shields.io/badge/Google%20Colab-Supported-orange.svg)](https://github.com/kwahalf/py-googletraffic/blob/main/COLAB.md)
+[![Contributors](https://img.shields.io/github/contributors/kwahalf/py-googletraffic.svg)](https://github.com/kwahalf/py-googletraffic/blob/main/CONTRIBUTORS.md)
 
 ## Overview
 
@@ -36,21 +36,21 @@ Traffic is classified into 4 levels based on Google Maps colors:
 
 - 💻 **Local Development:** Windows, macOS, Linux
 - 📓 **Jupyter Notebooks:** Local or JupyterHub environments  
-- ☁️ **Google Colab:** Full cloud-based support ([Setup Guide](COLAB.md))
+- ☁️ **Google Colab:** Full cloud-based support ([Setup Guide](https://github.com/kwahalf/py-googletraffic/blob/main/COLAB.md))
 - 🐳 **Docker:** Can be containerized for deployment
 
-> **📓 Google Colab Users:** See the complete [Google Colab Setup Guide](COLAB.md) for cloud-based installation and usage examples.
+> **📓 Google Colab Users:** See the complete [Google Colab Setup Guide](https://github.com/kwahalf/py-googletraffic/blob/main/COLAB.md) for cloud-based installation and usage examples.
 
 ## Installation
 
 > **📌 Platform-Specific Guides:**
-> - **Windows:** [Windows Setup Guide](WINDOWS.md)
-> - **Google Colab:** [Colab Setup Guide](COLAB.md)  
-> - **General:** [Complete Installation Guide](INSTALLATION.md)
+> - **Windows:** [Windows Setup Guide](https://github.com/kwahalf/py-googletraffic/blob/main/WINDOWS.md)
+> - **Google Colab:** [Colab Setup Guide](https://github.com/kwahalf/py-googletraffic/blob/main/COLAB.md)  
+> - **General:** [Complete Installation Guide](https://github.com/kwahalf/py-googletraffic/blob/main/INSTALLATION.md)
 
 ### Prerequisites
 
-> **Note:** Google Colab users can skip this section and follow the [Colab Setup Guide](COLAB.md) instead.
+> **Note:** Google Colab users can skip this section and follow the [Colab Setup Guide](https://github.com/kwahalf/py-googletraffic/blob/main/COLAB.md) instead.
 
 1. **Python 3.8+**
 2. **ChromeDriver** (for Selenium browser automation):
@@ -72,6 +72,15 @@ Traffic is classified into 4 levels based on Google Maps colors:
 
 ### Install Package
 
+**Option 1: Install from PyPI (Recommended)**
+
+```bash
+# Install the latest stable version
+pip install py-googletraffic
+```
+
+**Option 2: Install from Source (For Development)**
+
 ```bash
 # Clone the repository
 git clone https://github.com/kwahalf/py-googletraffic.git
@@ -90,16 +99,13 @@ source venv/bin/activate
 
 # Install in development mode
 pip install -e .
-
-# Or install dependencies directly
-pip install -r requirements.txt
 ```
 
 ## Try It Now! 🚀
 
 **Want to try without installing anything?** Open our interactive Google Colab notebook:
 
-👉 **[Open in Google Colab](examples/google_colab_example.ipynb)** 👈
+👉 **[Open in Google Colab](https://github.com/kwahalf/py-googletraffic/blob/main/examples/google_colab_example.ipynb)** 👈
 
 The Colab notebook includes:
 - ✅ Complete setup instructions (no local installation needed)
@@ -107,7 +113,7 @@ The Colab notebook includes:
 - ✅ Multi-location traffic comparison
 - ✅ Save results to Google Drive
 
-See the [Google Colab Setup Guide](COLAB.md) for more details.
+See the [Google Colab Setup Guide](https://github.com/kwahalf/py-googletraffic/blob/main/COLAB.md) for more details.
 
 ## Quick Start
 
@@ -224,7 +230,7 @@ traffic = gt.make_raster_from_polygon(
 
 ## Examples
 
-Check out the Jupyter notebook in [examples/getting_started.ipynb](examples/getting_started.ipynb) for comprehensive examples including:
+Check out the Jupyter notebook in [examples/getting_started.ipynb](https://github.com/kwahalf/py-googletraffic/blob/main/examples/getting_started.ipynb) for comprehensive examples including:
 
 - Creating and visualizing traffic rasters
 - Statistical analysis of traffic patterns
@@ -234,17 +240,17 @@ Check out the Jupyter notebook in [examples/getting_started.ipynb](examples/gett
 
 ## Documentation
 
-- **[QUICKSTART.md](QUICKSTART.md)** - Get started in 5 minutes (all platforms)
-- **[INSTALLATION.md](INSTALLATION.md)** - Detailed installation guide (macOS/Linux/Windows)
-- **[WINDOWS.md](WINDOWS.md)** - 🪟 Complete Windows setup guide with troubleshooting
-- **[examples/getting_started.ipynb](examples/getting_started.ipynb)** - Interactive Jupyter tutorial
-- **[examples/simple_example.py](examples/simple_example.py)** - Simple Python script example
+- **[QUICKSTART.md](https://github.com/kwahalf/py-googletraffic/blob/main/QUICKSTART.md)** - Get started in 5 minutes (all platforms)
+- **[INSTALLATION.md](https://github.com/kwahalf/py-googletraffic/blob/main/INSTALLATION.md)** - Detailed installation guide (macOS/Linux/Windows)
+- **[WINDOWS.md](https://github.com/kwahalf/py-googletraffic/blob/main/WINDOWS.md)** - 🪟 Complete Windows setup guide with troubleshooting
+- **[examples/getting_started.ipynb](https://github.com/kwahalf/py-googletraffic/blob/main/examples/getting_started.ipynb)** - Interactive Jupyter tutorial
+- **[examples/simple_example.py](https://github.com/kwahalf/py-googletraffic/blob/main/examples/simple_example.py)** - Simple Python script example
 
 **Which guide should I read?**
-- First time user? → Start with [QUICKSTART.md](QUICKSTART.md)
-- Windows user? → Follow [WINDOWS.md](WINDOWS.md)
-- Installation issues? → Check [INSTALLATION.md](INSTALLATION.md)
-- Want to learn features? → Try [getting_started.ipynb](examples/getting_started.ipynb)
+- First time user? → Start with [QUICKSTART.md](https://github.com/kwahalf/py-googletraffic/blob/main/QUICKSTART.md)
+- Windows user? → Follow [WINDOWS.md](https://github.com/kwahalf/py-googletraffic/blob/main/WINDOWS.md)
+- Installation issues? → Check [INSTALLATION.md](https://github.com/kwahalf/py-googletraffic/blob/main/INSTALLATION.md)
+- Want to learn features? → Try [getting_started.ipynb](https://github.com/kwahalf/py-googletraffic/blob/main/examples/getting_started.ipynb)
 
 ## API Costs
 
@@ -435,7 +441,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 - Use Conda: `conda install -c conda-forge rasterio`
 - Or download pre-built wheels from: https://www.lfd.uci.edu/~gohlke/pythonlibs/
 
-**See [INSTALLATION.md](INSTALLATION.md) for detailed Windows troubleshooting.**
+**See [INSTALLATION.md](https://github.com/kwahalf/py-googletraffic/blob/main/INSTALLATION.md) for detailed Windows troubleshooting.**
 
 ## Testing
 
@@ -488,7 +494,7 @@ make test-pytest
 - `tests/test_utils.py` - Tests for utility functions and calculations
 - `tests/test_core.py` - Tests for core functions (using mocks)
 
-See [tests/README.md](tests/README.md) for detailed testing documentation.
+See [tests/README.md](https://github.com/kwahalf/py-googletraffic/blob/main/tests/README.md) for detailed testing documentation.
 
 ### Continuous Integration
 
@@ -531,9 +537,9 @@ We appreciate all contributions to **py-googletraffic**!
 
 [![Contributors](https://contrib.rocks/image?repo=kwahalf/py-googletraffic)](https://github.com/kwahalf/py-googletraffic/graphs/contributors)
 
-See [CONTRIBUTORS.md](CONTRIBUTORS.md) for a complete list of contributors and their contributions.
+See [CONTRIBUTORS.md](https://github.com/kwahalf/py-googletraffic/blob/main/CONTRIBUTORS.md) for a complete list of contributors and their contributions.
 
-**Want to contribute?** Check out our [Contributing Guide](CONTRIBUTING.md) to get started!
+**Want to contribute?** Check out our [Contributing Guide](https://github.com/kwahalf/py-googletraffic/blob/main/CONTRIBUTING.md) to get started!
 
 ## License
 

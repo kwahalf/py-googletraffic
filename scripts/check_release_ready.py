@@ -5,7 +5,6 @@ Pre-release checklist for py-googletraffic.
 Checks if the package is ready for PyPI publication.
 """
 
-import os
 import sys
 import subprocess
 import re

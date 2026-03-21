@@ -28,7 +28,18 @@ chromedriver --version  # Verify
 
 ## Step 2: Install Package (1 minute)
 
-**macOS/Linux:**
+**All Platforms (Recommended - PyPI):**
+```bash
+# Install from PyPI
+pip install py-googletraffic
+
+# Verify installation
+python -c "import googletraffic as gt; print('✓ Installed version:', gt.__version__)"
+```
+
+**Alternative: Install from Source (For Developers)**
+
+*macOS/Linux:*
 ```bash
 cd /path/to/py-googletraffic
 source venv/bin/activate  # If using virtual environment
@@ -36,7 +47,7 @@ pip install -e .
 python -c "import googletraffic as gt; print('✓ Installed version:', gt.__version__)"
 ```
 
-**Windows (Command Prompt):**
+*Windows (Command Prompt):*
 ```cmd
 cd C:\path\to\py-googletraffic
 venv\Scripts\activate.bat
@@ -44,7 +55,7 @@ pip install -e .
 python -c "import googletraffic as gt; print('✓ Installed version:', gt.__version__)"
 ```
 
-**Windows (PowerShell):**
+*Windows (PowerShell):*
 ```powershell
 cd C:\path\to\py-googletraffic
 venv\Scripts\Activate.ps1
@@ -178,7 +189,7 @@ for level in range(1, 5):
 → Check key is correct, Maps JavaScript API is enabled
 
 ❌ **"No module named 'googletraffic'"**  
-→ Run `pip install -e .` in project directory
+→ Run `pip install py-googletraffic` or `pip install -e .` (from source)
 
 ❌ **Browser crashes**  
 → Try increasing `wait_time=10` or `headless=False`

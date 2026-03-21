@@ -47,14 +47,11 @@ Run this setup code **once** at the beginning of your Colab notebook:
 import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
-# Install py-googletraffic from GitHub
-!pip install git+https://github.com/kwahalf/py-googletraffic.git
+# Install py-googletraffic from PyPI
+!pip install py-googletraffic
 
-# Alternative: Install from local clone
-# !git clone https://github.com/kwahalf/py-googletraffic.git
-# %cd py-googletraffic
-# !pip install -e .
-# %cd ..
+# Alternative: Install from GitHub (for latest development version)
+# !pip install git+https://github.com/kwahalf/py-googletraffic.git
 ```
 
 ### Step 3: Configure ChromeDriver Path
@@ -92,7 +89,7 @@ os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
 # 4. Install py-googletraffic
 print("📦 Installing py-googletraffic...")
-!pip install -q git+https://github.com/kwahalf/py-googletraffic.git
+!pip install -q py-googletraffic
 
 # 5. Verify installation
 print("✅ Setup complete! Verifying installation...")
@@ -291,6 +288,35 @@ traffic_raster = gt.make_raster(
 3. Check API key restrictions and quotas
 4. Ensure billing is enabled (Google requires it even for free tier)
 
+### Issue 6: SessionNotCreatedException (Chrome Instance Exited)
+
+**Error:** `selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome failed to start: exited normally`
+
+**Cause:** Google Colab runs in a containerized environment that requires specific Chrome flags to prevent the browser from exiting prematurely.
+
+**Solution:** The package automatically includes the necessary Chrome flags for Colab compatibility:
+- `--disable-setuid-sandbox` - Required for containerized environments
+- `--remote-debugging-port=9222` - Enables remote debugging in restricted environments
+- `--disable-extensions` - Prevents extension-related crashes
+- `--disable-software-rasterizer` - Improves stability in headless mode
+
+These flags are already configured in the package (version 0.1.0+). If you're still experiencing this error:
+
+```python
+# Update to the latest version
+!pip install --upgrade py-googletraffic
+
+# Restart the runtime
+# Runtime → Restart runtime
+```
+
+If the issue persists, verify Chrome and ChromeDriver are properly installed:
+
+```python
+!google-chrome --version
+!chromedriver --version
+```
+
 ## Tips and Best Practices
 
 ### 1. Store API Key Securely
@@ -454,7 +480,7 @@ print("📦 Installing dependencies...")
 import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
-!pip install -q git+https://github.com/kwahalf/py-googletraffic.git
+!pip install -q py-googletraffic
 
 # 2. IMPORTS
 import googletraffic as gt

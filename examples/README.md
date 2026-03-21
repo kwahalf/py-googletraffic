@@ -66,6 +66,10 @@ Cloud-ready notebook specifically designed for Google Colab:
 
 1. **Install py-googletraffic:**
    ```bash
+   # Option A: From PyPI (recommended)
+   pip install py-googletraffic
+   
+   # Option B: From source (for development)
    pip install -e .  # From the repository root
    ```
 
@@ -160,8 +164,11 @@ traffic_raster
 **Error: `No module named 'googletraffic'`**
 ```bash
 # Install the package first
-cd /path/to/py-googletraffic
-pip install -e .
+pip install py-googletraffic
+
+# Or from source:
+# cd /path/to/py-googletraffic
+# pip install -e .
 ```
 
 **Error: `'chromedriver' executable needs to be in PATH`**

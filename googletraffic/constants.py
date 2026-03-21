@@ -115,7 +115,8 @@ GOOGLE_MAPS_HTML_TEMPLATE = """
 
         window.initMap = initMap;
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={api_key}&callback=initMap&libraries=&v=weekly" async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={api_key}&callback=initMap&\
+libraries=&v=weekly" async></script>
 </body>
 </html>
 """

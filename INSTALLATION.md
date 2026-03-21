@@ -152,7 +152,51 @@ echo "GOOGLE_MAPS_API_KEY=your_api_key_here" > .env
 
 ## Installation
 
-### Option 1: Install from Source (Development)
+### Option 1: Install from PyPI (Recommended)
+
+The easiest way to install py-googletraffic:
+
+```bash
+# Install the latest stable version
+pip install py-googletraffic
+```
+
+With virtual environment (recommended):
+
+#### macOS/Linux:
+```bash
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate
+
+# Install package
+pip install py-googletraffic
+```
+
+#### Windows (Command Prompt):
+```cmd
+:: Create and activate virtual environment
+python -m venv venv
+venv\Scripts\activate.bat
+
+:: Install package
+pip install py-googletraffic
+```
+
+#### Windows (PowerShell):
+```powershell
+# Create and activate virtual environment
+python -m venv venv
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser  # If needed
+venv\Scripts\Activate.ps1
+
+# Install package
+pip install py-googletraffic
+```
+
+### Option 2: Install from Source (For Development)
+
+For developers who want to contribute or use the latest development version:
 
 #### macOS/Linux:
 ```bash
@@ -166,7 +210,7 @@ python -m venv venv
 # Activate virtual environment
 source venv/bin/activate
 
-# Install package in development mode
+# Install in development mode
 pip install -e .
 ```
 
@@ -182,7 +226,7 @@ python -m venv venv
 :: Activate virtual environment
 venv\Scripts\activate.bat
 
-:: Install package in development mode
+:: Install in development mode
 pip install -e .
 ```
 
@@ -199,15 +243,8 @@ python -m venv venv
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 venv\Scripts\Activate.ps1
 
-# Install package in development mode
+# Install in development mode
 pip install -e .
-```
-
-### Option 2: Install from PyPI (When Available)
-
-```bash
-# Future: Once published to PyPI
-pip install py-googletraffic
 ```
 
 ### Verify Installation

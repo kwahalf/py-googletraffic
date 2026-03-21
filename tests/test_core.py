@@ -179,7 +179,7 @@ class TestMakeRasterFromBbox(unittest.TestCase):
         mock_rio.return_value.__enter__.return_value = mock_dst
 
         # Test
-        result = make_raster_from_bbox(
+        make_raster_from_bbox(
             bbox=(-74.0, 40.7, -73.9, 40.8),
             zoom=14,
             google_key="test_key",
@@ -209,7 +209,7 @@ class TestMakeRasterFromPolygon(unittest.TestCase):
             mock_bbox.return_value = np.ones((1000, 1000), dtype=np.uint8)
 
             # Test
-            result = make_raster_from_polygon(polygon=gdf, zoom=14, google_key="test_key")
+            make_raster_from_polygon(polygon=gdf, zoom=14, google_key="test_key")
 
             # Verify
             mock_bbox.assert_called_once()
@@ -231,7 +231,7 @@ class TestMakeRasterFromPolygon(unittest.TestCase):
             mock_bbox.return_value = np.ones((1000, 1000), dtype=np.uint8)
 
             # Test
-            result = make_raster_from_polygon(polygon=polygon, zoom=14, google_key="test_key")
+            make_raster_from_polygon(polygon=polygon, zoom=14, google_key="test_key")
 
             # Verify
             mock_bbox.assert_called_once()
@@ -267,7 +267,7 @@ class TestCaptureTrafficMap(unittest.TestCase):
         with patch("googletraffic.core.np.array", return_value=mock_img_array):
             # Test
             try:
-                result = _capture_traffic_map(
+                _capture_traffic_map(
                     latitude=40.7580,
                     longitude=-73.9855,
                     zoom=14,
