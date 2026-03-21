@@ -8,7 +8,8 @@ The following people have contributed to this project, sorted by number of commi
 
 | Contributor | Commits | First Contribution |
 |-------------|---------|-------------------|
-| Denis Juma | 24 | March 2026 |
+| Denis Juma | 29 | March 2026 |
+| kwahalf | 1 | Unknown |
 
 ## How to Contribute
 
@@ -43,5 +44,5 @@ Or use the GitHub Action which updates it automatically on each push to main.
 ---
 
 *Last updated: 2026-03-21*
-*Total contributors: 1*
-*Total commits: 24*
+*Total contributors: 2*
+*Total commits: 30*
