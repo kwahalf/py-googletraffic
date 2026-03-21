@@ -24,7 +24,7 @@ def color_distance(color1: Tuple[int, int, int], color2: Tuple[int, int, int]) -
     float
         Euclidean distance between colors
     """
-    return math.sqrt(sum((c1 - c2) ** 2 for c1, c2 in zip(color1, color2)))
+    return math.sqrt(sum((int(c1) - int(c2)) ** 2 for c1, c2 in zip(color1, color2)))
 
 
 def classify_traffic_pixel(rgb: Tuple[int, int, int]) -> int:
