@@ -28,8 +28,10 @@ jobs:
       
       - name: Verify version consistency
         run: |
-          VERSION_INIT=$(python -c "import googletraffic; print(googletraffic.__version__)")
-          VERSION_SETUP=$(python setup.py --version)
+          # Get version from __init__.py (parse without importing)
+          VERSION_INIT=$(grep '__version__' googletraffic/__init__.py | cut -d '"' -f 2)
+          # Get version from setup.py
+          VERSION_SETUP=$(grep 'version=' setup.py | head -1 | cut -d '"' -f 2)
           echo "Version in __init__.py: $VERSION_INIT"
           echo "Version in setup.py: $VERSION_SETUP"
           if [ "$VERSION_INIT" != "$VERSION_SETUP" ]; then

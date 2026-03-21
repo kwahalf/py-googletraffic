@@ -32,13 +32,13 @@ jobs:
       - name: Check if version changed
         id: version_check
         run: |
-          # Get current version
-          CURRENT_VERSION=$(python -c "import googletraffic; print(googletraffic.__version__)")
+          # Get current version (parse from file without importing)
+          CURRENT_VERSION=$(grep '__version__' googletraffic/__init__.py | cut -d '"' -f 2)
           echo "Current version: $CURRENT_VERSION"
           
           # Get previous version from last commit
-          git checkout HEAD~1
-          PREV_VERSION=$(python -c "import googletraffic; print(googletraffic.__version__)" 2>/dev/null || echo "0.0.0")
+          git checkout HEAD~1 2>/dev/null || git checkout HEAD
+          PREV_VERSION=$(grep '__version__' googletraffic/__init__.py 2>/dev/null | cut -d '"' -f 2 || echo "0.0.0")
           echo "Previous version: $PREV_VERSION"
           
           git checkout -
