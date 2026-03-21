@@ -291,6 +291,35 @@ traffic_raster = gt.make_raster(
 3. Check API key restrictions and quotas
 4. Ensure billing is enabled (Google requires it even for free tier)
 
+### Issue 6: SessionNotCreatedException (Chrome Instance Exited)
+
+**Error:** `selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome failed to start: exited normally`
+
+**Cause:** Google Colab runs in a containerized environment that requires specific Chrome flags to prevent the browser from exiting prematurely.
+
+**Solution:** The package automatically includes the necessary Chrome flags for Colab compatibility:
+- `--disable-setuid-sandbox` - Required for containerized environments
+- `--remote-debugging-port=9222` - Enables remote debugging in restricted environments
+- `--disable-extensions` - Prevents extension-related crashes
+- `--disable-software-rasterizer` - Improves stability in headless mode
+
+These flags are already configured in the package (version 0.1.0+). If you're still experiencing this error:
+
+```python
+# Update to the latest version
+!pip install --upgrade py-googletraffic
+
+# Restart the runtime
+# Runtime → Restart runtime
+```
+
+If the issue persists, verify Chrome and ChromeDriver are properly installed:
+
+```python
+!google-chrome --version
+!chromedriver --version
+```
+
 ## Tips and Best Practices
 
 ### 1. Store API Key Securely
