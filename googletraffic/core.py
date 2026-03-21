@@ -52,19 +52,19 @@ def _setup_driver(headless: bool = True) -> webdriver.Chrome:
     options = Options()
     if headless:
         options.add_argument("--headless=new")
-    
+
     # Essential flags for all environments
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument(f"--window-size={TILE_SIZE},{TILE_SIZE}")
-    
+
     # Additional flags for Colab and containerized environments
     options.add_argument("--disable-setuid-sandbox")
     options.add_argument("--remote-debugging-port=9222")
     options.add_argument("--disable-extensions")
     options.add_argument("--disable-software-rasterizer")
-    
+
     # Disable automation flags that might cause issues
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option("useAutomationExtension", False)
