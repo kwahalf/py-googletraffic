@@ -35,20 +35,52 @@ from .utils import (
 )
 
 
-def _setup_driver(headless: bool = True) -> webdriver.Chrome:
+def _is_running_in_colab() -> bool:
+    """Detect if code is running in Google Colab environment."""
+    try:
+        import google.colab  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+def _setup_driver(headless: bool = True, use_colab_driver: bool = None) -> webdriver.Chrome:
     """
     Set up Chrome WebDriver for capturing maps.
+
+    Automatically detects Google Colab and uses google-colab-selenium for
+    optimal compatibility.
 
     Parameters
     ----------
     headless : bool
         Whether to run browser in headless mode
+    use_colab_driver : bool, optional
+        Force using google-colab-selenium driver. If None (default),
+        auto-detects Colab environment.
 
     Returns
     -------
     webdriver.Chrome
         Configured Chrome driver
     """
+    # Auto-detect Colab if not explicitly specified
+    if use_colab_driver is None:
+        use_colab_driver = _is_running_in_colab()
+
+    if use_colab_driver:
+        try:
+            from google_colab_selenium import get_driver
+            # google-colab-selenium handles all Colab-specific setup
+            driver = get_driver()
+            return driver
+        except ImportError:
+            raise ImportError(
+                "google-colab-selenium is required when use_colab_driver=True. "
+                "Install with: pip install google-colab-selenium"
+            )
+
+    # Standard Chrome driver setup
     options = Options()
     if headless:
         options.add_argument("--headless=new")
@@ -82,6 +114,7 @@ def _capture_traffic_map(
     height: int = 640,
     wait_time: int = 3,
     headless: bool = True,
+    use_colab_driver: bool = None,
 ) -> np.ndarray:
     """
     Capture a screenshot of Google Maps with traffic layer.
@@ -124,7 +157,7 @@ def _capture_traffic_map(
             temp_file = f.name
 
         # Set up driver
-        driver = _setup_driver(headless=headless)
+        driver = _setup_driver(headless=headless, use_colab_driver=use_colab_driver)
         driver.set_window_size(width, height)
 
         # Load page
@@ -168,6 +201,7 @@ def make_raster(
     output_path: Optional[str] = None,
     wait_time: int = 3,
     headless: bool = True,
+    use_colab_driver: bool = None,
 ) -> Union[np.ndarray, str]:
     """
     Create a traffic raster centered at a specific location.
@@ -194,6 +228,10 @@ def make_raster(
         Seconds to wait for traffic layer to load (default: 3)
     headless : bool
         Run browser in headless mode (default: True)
+    use_colab_driver : bool, optional
+        Force using google-colab-selenium driver. If None (default),
+        automatically detects Google Colab and uses google-colab-selenium.
+        Requires: pip install google-colab-selenium (auto-installed in Colab)
 
     Returns
     -------
@@ -226,6 +264,7 @@ def make_raster(
         height=height,
         wait_time=wait_time,
         headless=headless,
+        use_colab_driver=use_colab_driver,
     )
 
     # Classify pixels to traffic levels
@@ -264,6 +303,7 @@ def make_raster_from_bbox(
     max_pixels: int = 2000,
     wait_time: int = 3,
     headless: bool = True,
+    use_colab_driver: bool = None,
 ) -> Union[np.ndarray, str]:
     """
     Create a traffic raster from a bounding box.
@@ -287,6 +327,8 @@ def make_raster_from_bbox(
         Seconds to wait for traffic layer to load per tile
     headless : bool
         Run browser in headless mode
+    use_colab_driver : bool, optional
+        Force using google-colab-selenium. If None, auto-detects Colab
 
     Returns
     -------
@@ -328,6 +370,7 @@ def make_raster_from_bbox(
             output_path=output_path,
             wait_time=wait_time,
             headless=headless,
+            use_colab_driver=use_colab_driver,
         )
 
     # Multiple tiles - capture and mosaic
@@ -346,6 +389,7 @@ def make_raster_from_bbox(
             output_path=None,
             wait_time=wait_time,
             headless=headless,
+            use_colab_driver=use_colab_driver,
         )
         tile_arrays.append((tile, tile_array))
 
@@ -398,6 +442,7 @@ def make_raster_from_polygon(
     max_pixels: int = 2000,
     wait_time: int = 3,
     headless: bool = True,
+    use_colab_driver: bool = None,
 ) -> Union[np.ndarray, str]:
     """
     Create a traffic raster covering a polygon area.
@@ -418,6 +463,8 @@ def make_raster_from_polygon(
         Seconds to wait for traffic layer to load per tile
     headless : bool
         Run browser in headless mode
+    use_colab_driver : bool, optional
+        Force using google-colab-selenium. If None, auto-detects Colab
 
     Returns
     -------
@@ -460,4 +507,5 @@ def make_raster_from_polygon(
         max_pixels=max_pixels,
         wait_time=wait_time,
         headless=headless,
+        use_colab_driver=use_colab_driver,
     )
