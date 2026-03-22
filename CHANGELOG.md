@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Docker container support
 - Command-line interface (CLI)
 
+## [0.1.2] - 2026-03-22
+
+### Fixed
+- Corrected google-colab-selenium import usage to use official API (`import google_colab_selenium as gs` and `gs.Chrome()` instead of incorrect `get_driver()` usage)
+- Fixed ImportError that prevented package from working in Google Colab
+
 ## [0.1.1] - 2026-03-22
 
 ### Fixed
