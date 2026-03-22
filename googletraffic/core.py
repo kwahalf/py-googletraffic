@@ -39,6 +39,7 @@ def _is_running_in_colab() -> bool:
     """Detect if code is running in Google Colab environment."""
     try:
         import google.colab  # noqa: F401
+
         return True
     except ImportError:
         return False
@@ -71,6 +72,7 @@ def _setup_driver(headless: bool = True, use_colab_driver: bool = None) -> webdr
     if use_colab_driver:
         try:
             from google_colab_selenium import get_driver
+
             # google-colab-selenium handles all Colab-specific setup
             driver = get_driver()
             return driver

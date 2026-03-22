@@ -113,9 +113,7 @@ def main():
     print(f"Version in setup.py: {version_setup}")
     print(f"Version in pyproject.toml: {version_pyproject}")
 
-    versions_match = (
-        version_init == version_setup == version_pyproject and version_init is not None
-    )
+    versions_match = version_init == version_setup == version_pyproject and version_init is not None
 
     if print_check(versions_match, "All versions match"):
         print(f"  → Version: {Colors.GREEN}{version_init}{Colors.RESET}")
@@ -153,9 +151,7 @@ def main():
     # Check for placeholder URLs
     success, readme_content = run_command("cat README.md")
     has_placeholders = "kwahalf" in readme_content.lower()
-    print_check(
-        not has_placeholders, "No placeholder URLs in README (no 'kwahalf')"
-    )
+    print_check(not has_placeholders, "No placeholder URLs in README (no 'kwahalf')")
     if has_placeholders:
         warnings.append("Found 'kwahalf' placeholders in README")
 
