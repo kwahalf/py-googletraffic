@@ -71,10 +71,11 @@ def _setup_driver(headless: bool = True, use_colab_driver: bool = None) -> webdr
 
     if use_colab_driver:
         try:
-            from google_colab_selenium import get_driver
+            # Correct import for google-colab-selenium
+            import google_colab_selenium as gs
 
-            # google-colab-selenium handles all Colab-specific setup
-            driver = get_driver()
+            # google-colab-selenium provides a pre-configured Chrome driver
+            driver = gs.Chrome()
             return driver
         except ImportError:
             raise ImportError(
