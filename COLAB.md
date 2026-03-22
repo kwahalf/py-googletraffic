@@ -12,57 +12,43 @@ This guide provides step-by-step instructions for using **py-googletraffic** in 
 
 ## Overview
 
-Google Colab is a free cloud-based Jupyter notebook environment. To use **py-googletraffic** in Colab, you need to:
+Google Colab is a free cloud-based Jupyter notebook environment. Using **py-googletraffic** in Colab is simple:
 
-1. Install Chrome and ChromeDriver
-2. Install the py-googletraffic package and its dependencies
-3. Configure Selenium for headless operation
+1. Install GDAL and py-googletraffic
+2. The package automatically detects Colab and uses optimized drivers
+3. Start capturing traffic data!
 
-The entire setup takes about 2-3 minutes on first run.
+The entire setup takes about 1-2 minutes on first run.
 
-## One-Time Setup
+## Quick Setup (Recommended)
 
 Run this setup code **once** at the beginning of your Colab notebook:
 
-### Step 1: Install System Dependencies
-
 ```python
-# Install Chrome and ChromeDriver for Selenium
-!apt-get update
-!apt-get install -y chromium-chromedriver
-!apt-get install -y chromium-browser
+# ============================================================================
+# Google Colab Setup for py-googletraffic
+# Run this cell once at the start of your notebook
+# ============================================================================
 
-# Verify installation
-!which chromium-browser
-!which chromedriver
-```
+# 1. Install GDAL (required for geospatial operations)
+print("📦 Installing GDAL...")
+!apt-get update -qq
+!apt-get install -y gdal-bin libgdal-dev >/dev/null 2>&1
 
-### Step 2: Install Python Packages
-
-```python
-# Install GDAL dependencies (required for rasterio)
-!apt-get install -y gdal-bin libgdal-dev
-
-# Set GDAL environment variables
 import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
-# Install py-googletraffic from PyPI
-!pip install py-googletraffic
+# 2. Install py-googletraffic with Colab-optimized driver
+print("📦 Installing py-googletraffic...")
+!pip install -q py-googletraffic google-colab-selenium
 
-# Alternative: Install from GitHub (for latest development version)
-# !pip install git+https://github.com/kwahalf/py-googletraffic.git
+# 3. Verify installation
+import googletraffic as gt
+print(f"✅ py-googletraffic version: {gt.__version__}")
+print("✅ Ready to use!")
 ```
 
-### Step 3: Configure ChromeDriver Path
-
-```python
-# Add ChromeDriver to PATH (if not already available)
-import sys
-chromium_driver_path = '/usr/lib/chromium-browser/'
-if chromium_driver_path not in sys.path:
-    sys.path.insert(0, chromium_driver_path)
-```
+**That's it!** The package automatically detects Google Colab and uses `google-colab-selenium` for optimal compatibility.
 
 ## Complete Setup Code
 
@@ -74,24 +60,20 @@ Copy and paste this complete setup block into your Colab notebook:
 # Run this cell once at the start of your notebook
 # ============================================================================
 
-# 1. Install Chrome and ChromeDriver
-print("📦 Installing Chrome and ChromeDriver...")
-!apt-get update -qq
-!apt-get install -y chromium-chromedriver chromium-browser >/dev/null 2>&1
-
-# 2. Install GDAL (required for geospatial operations)
+# 1. Install GDAL (required for geospatial operations)
 print("📦 Installing GDAL...")
+!apt-get update -qq
 !apt-get install -y gdal-bin libgdal-dev >/dev/null 2>&1
 
-# 3. Set environment variables
+# 2. Set environment variables
 import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
-# 4. Install py-googletraffic
+# 3. Install py-googletraffic with Colab-optimized driver
 print("📦 Installing py-googletraffic...")
-!pip install -q py-googletraffic
+!pip install -q py-googletraffic google-colab-selenium
 
-# 5. Verify installation
+# 4. Verify installation
 print("✅ Setup complete! Verifying installation...")
 import googletraffic as gt
 print(f"✅ py-googletraffic version: {gt.__version__}")
@@ -100,7 +82,7 @@ print("✅ Ready to use!")
 
 ## Usage Example
 
-After running the setup, use **py-googletraffic** normally:
+After running the setup, use **py-googletraffic** - it automatically detects Colab!
 
 ```python
 import googletraffic as gt
@@ -111,6 +93,7 @@ import matplotlib.pyplot as plt
 GOOGLE_API_KEY = "YOUR_API_KEY_HERE"
 
 # Create a traffic raster for New York City
+# No special flags needed - auto-detects Colab!
 print("🚦 Capturing traffic data...")
 traffic_raster = gt.make_raster(
     location=(40.7580, -73.9855),  # Times Square, NYC
@@ -292,19 +275,22 @@ traffic_raster = gt.make_raster(
 
 **Error:** `selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome failed to start: exited normally`
 
-**Cause:** Google Colab runs in a containerized environment that requires specific Chrome flags to prevent the browser from exiting prematurely.
+**Cause:** Chrome driver compatibility issues in Google Colab's containerized environment.
 
-**Solution:** The package automatically includes the necessary Chrome flags for Colab compatibility:
-- `--disable-setuid-sandbox` - Required for containerized environments
-- `--remote-debugging-port=9222` - Enables remote debugging in restricted environments
-- `--disable-extensions` - Prevents extension-related crashes
-- `--disable-software-rasterizer` - Improves stability in headless mode
-
-These flags are already configured in the package (version 0.1.0+). If you're still experiencing this error:
+**Solution:** Use the recommended setup with `google-colab-selenium`:
 
 ```python
-# Update to the latest version
-!pip install --upgrade py-googletraffic
+# Make sure you installed google-colab-selenium
+!pip install --upgrade py-googletraffic google-colab-selenium
+
+# The package auto-detects Colab and uses the optimized driver
+import googletraffic as gt
+traffic = gt.make_raster(...)  # Works automatically!
+```
+
+The package automatically detects Google Colab and uses `google-colab-selenium` which is specifically designed for Colab environments.
+
+If you're still experiencing issues:
 
 # Restart the runtime
 # Runtime → Restart runtime
@@ -475,12 +461,12 @@ Here's a complete notebook you can copy and run:
 # 1. SETUP (Run once)
 print("📦 Installing dependencies...")
 !apt-get update -qq
-!apt-get install -y chromium-chromedriver chromium-browser gdal-bin libgdal-dev >/dev/null 2>&1
+!apt-get install -y gdal-bin libgdal-dev >/dev/null 2>&1
 
 import os
 os.environ['GDAL_CONFIG'] = '/usr/bin/gdal-config'
 
-!pip install -q py-googletraffic
+!pip install -q py-googletraffic google-colab-selenium
 
 # 2. IMPORTS
 import googletraffic as gt
@@ -492,6 +478,7 @@ from datetime import datetime
 GOOGLE_API_KEY = "YOUR_API_KEY_HERE"  # Replace with your key
 
 # 4. CAPTURE TRAFFIC DATA
+# No special flags needed - auto-detects Colab!
 print("🚦 Capturing traffic data for Times Square...")
 traffic_raster = gt.make_raster(
     location=(40.7580, -73.9855),

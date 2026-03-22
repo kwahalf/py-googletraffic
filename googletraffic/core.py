@@ -231,6 +231,10 @@ def make_raster(
         Seconds to wait for traffic layer to load (default: 3)
     headless : bool
         Run browser in headless mode (default: True)
+    use_colab_driver : bool, optional
+        Force using google-colab-selenium driver. If None (default),
+        automatically detects Google Colab and uses google-colab-selenium.
+        Requires: pip install google-colab-selenium (auto-installed in Colab)
 
     Returns
     -------
@@ -326,6 +330,8 @@ def make_raster_from_bbox(
         Seconds to wait for traffic layer to load per tile
     headless : bool
         Run browser in headless mode
+    use_colab_driver : bool, optional
+        Force using google-colab-selenium. If None, auto-detects Colab
 
     Returns
     -------
@@ -460,6 +466,8 @@ def make_raster_from_polygon(
         Seconds to wait for traffic layer to load per tile
     headless : bool
         Run browser in headless mode
+    use_colab_driver : bool, optional
+        Force using google-colab-selenium. If None, auto-detects Colab
 
     Returns
     -------

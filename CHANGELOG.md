@@ -14,6 +14,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Docker container support
 - Command-line interface (CLI)
 
+## [0.1.1] - 2026-03-22
+
+### Fixed
+- Fixed broken markdown links in README for PyPI display (converted relative links to absolute GitHub URLs)
+- Fixed Google Colab compatibility issues with Chrome driver
+- Fixed linting issues (line length, whitespace, unused imports)
+- Fixed code formatting with black
+
+### Added
+- Auto-detection for Google Colab environment
+- Automatic use of google-colab-selenium in Colab environments
+- Support for google-colab-selenium as optimized Colab driver
+- Simplified Google Colab setup (no manual Chrome installation needed)
+
+### Changed
+- Updated installation documentation to prioritize PyPI installation
+- Simplified COLAB.md with streamlined setup instructions
+- Updated example notebooks to use google-colab-selenium
+- Improved Chrome driver configuration for containerized environments
+
 ## [0.1.0] - 2026-03-21
 
 ### Added
